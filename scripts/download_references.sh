@@ -38,4 +38,5 @@ done
 echo "Done. success=$ok failed=$fail"
 if [[ $fail -gt 0 ]]; then
   echo "Failed list: $FAILED_LOG"
+  exit 1
 fi
