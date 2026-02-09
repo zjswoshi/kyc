@@ -1,0 +1,27 @@
+# Default thresholds and weights (tune with your data)
+recognition:
+  cosine_threshold: 0.40
+
+detector:
+  backend: retinaface  # retinaface | mtcnn | haar
+
+pad:
+  texture:
+    lbp_radius: 1
+    lbp_points: 8
+    suspicious_threshold: 0.55
+  freq:
+    high_freq_ratio_threshold: 0.35
+  motion:
+    mean_diff_low_threshold: 2.0
+    mean_diff_high_threshold: 20.0
+  rppg:
+    snr_threshold: 0.20
+
+fusion:
+  weights:
+    texture: 0.35
+    freq: 0.25
+    motion: 0.20
+    rppg: 0.20
+  decision_threshold: 0.50
