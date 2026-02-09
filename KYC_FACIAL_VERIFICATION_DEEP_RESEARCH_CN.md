@@ -105,4 +105,30 @@
 
 ---
 
-如果你后续要继续，我可以再补一份《30 天学习计划（每天 1 小时）》文档版本。
+后续可补充《30 天学习计划（每天 1 小时）》文档版本，供循序学习参考。
+
+## 8. 目前可作为基准的开源 KYC 相关模型/方案
+
+严格来说没有一个“官方通用 KYC 大一统模型”，但可以用以下开源组件拼出强基线：
+
+### 8.1 人脸比对（1:1）基线
+- **InsightFace (ArcFace)**：工业界常用开源基线，识别与验证能力强。
+- **facenet-pytorch / FaceNet 复现**：教学与快速原型常用。
+- **DeepFace（聚合库）**：便于快速横向比较 ArcFace/Facenet/VGGFace 等。
+
+### 8.2 活体检测（PAD）基线
+- **Silent-Face-Anti-Spoofing（MiniFASNet）**：轻量、社区常见。
+- **Face Anti-Spoofing Challenge 相关开源复现**：可用于 print/replay 场景基线。
+
+### 8.3 证件 OCR 与字段一致性
+- **PaddleOCR / Tesseract**：做证件字段抽取和与用户输入比对。
+- **MRZ 解析开源库**：用于护照等机读区一致性核验。
+
+### 8.4 建议的“可复现实验基线”
+- Face verification：使用 ArcFace embedding + cosine similarity。
+- PAD：使用 MiniFASNet（二分类 bonafide/attack）。
+- 规则引擎：
+  - 若 PAD 分数 < 阈值 → 拒绝；
+  - 否则用 face score 与证件一致性分数组合决策。
+
+> 结论：有开源“组件级”基线，但没有直接可商用的完整开源 KYC 套件；真正上线还需要补齐合规、审计、重试流程与人工复核闭环。
