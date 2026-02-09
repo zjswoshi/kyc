@@ -25,7 +25,10 @@ for row in "${ITEMS[@]}"; do
   url="${row%%$'\t'*}"
   output="${row##*$'\t'}"
   echo "[download] $output"
-  if curl -fL --retry 2 --connect-timeout 20 "$url" -o "$OUT_DIR/$output"; then
+  if curl -fL --retry 2 --connect-timeout 20 ${REFERENCES_CURL_OPTS:-} \
+    -H "User-Agent: reference-downloader/1.0 (curl; +https://arxiv.org/)" \
+    -H "Accept: application/pdf,application/octet-stream;q=0.9,*/*;q=0.8" \
+    "$url" -o "$OUT_DIR/$output"; then
     ok=$((ok + 1))
   else
     fail=$((fail + 1))
