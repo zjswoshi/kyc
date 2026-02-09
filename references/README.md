@@ -14,7 +14,7 @@
 - Silent-Face-Anti-Spoofing (MiniFASNet)
 
 ### 评测与规范性报告（公开）
-- NIST FRVT Ongoing report
+- NIST Face Recognition Technology Evaluation (FRTE 1:N, NIST IR 8525)
 - NIST Digital Identity Guidelines (SP 800-63-3)
 
 ## 无法直接下载的标准（受版权限制）
